@@ -1,5 +1,7 @@
 # Pig Game
 
+TODO: Adicionar a funcionalidade de game reset.
+
 Pig game é um simples jogo onde vence quem fizer 100 pontos primeiro.
 
 O jogo foi feito durante o aprendizado de manipulação do DOM.
