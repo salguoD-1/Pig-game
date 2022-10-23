@@ -12,15 +12,35 @@ const btnRoll = document.querySelector('.btn--roll');
 const btnNew = document.querySelector('.btn--new');
 const btnHold = document.querySelector('.btn--hold');
 
-// Pré definindo os valores
-score0El.textContent = 0;
-score1El.textContent = 0;
-diceEl.classList.add('hidden');
+// Declaração das variáveis
+let scores;
+let currentScore;
+let activePlayer;
+let playing;
 
-const scores = [0, 0];
-let currentScore = 0;
-let activePlayer = 0;
-let playing = true;
+// Iniciando o jogo
+const init = () => {
+  scores = [0, 0];
+  currentScore = 0;
+  activePlayer = 0;
+  playing = true;
+
+  // Resetamos os current values, o score e removemos o player que venceu
+  current0El.textContent = 0;
+  current1El.textContent = 0;
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+  // Adiciona a classe hidden para esconder o dado.
+  diceEl.classList.add('hidden');
+  player0El.classList.remove('player--winner');
+  player1El.classList.remove('player--winner');
+  // Adicionamos o player active no primeiro jogador, para resetar a ordem.
+  player0El.classList.add('player--active');
+  // Removemos o player active do segundo jogador, caso resetemos quando ele estiver jogando.
+  player1El.classList.remove('player--active');
+};
+
+init();
 
 // Muda para o outro jogador.
 const switchPlayer = () => {
@@ -86,3 +106,6 @@ btnHold.addEventListener('click', () => {
     }
   }
 });
+
+// Resetando o jogo chamando a função init
+btnNew.addEventListener('click', init);
